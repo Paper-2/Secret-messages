@@ -17,7 +17,7 @@ function getBackendPath() {
     // Development: use dotnet run or built dll
     return {
       command: 'dotnet',
-      args: ['run', '--project', path.join(__dirname, '../../backend')]
+      args: ['run', '--project', path.join(__dirname, '../backend')]
     };
   } else {
     // Production: use published executable
