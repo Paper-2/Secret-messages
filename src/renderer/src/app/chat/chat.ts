@@ -229,7 +229,7 @@ export class Chat implements OnInit, OnDestroy {
     this.input.set('');
 
     // Broadcast to peers if in Electron
-    if (window.p2p && this.peers().length > 0) {
+    if (window.p2p) {
       try {
         await window.p2p.broadcast({
           user: this.userName(),
