@@ -1,0 +1,59 @@
+<div class="chat-container">
+  <div class="user-name">
+    <label>Your name:
+      <input [(ngModel)]="userName" placeholder="Enter a name" />
+    </label>
+  </div>
+
+  <!-- P2P Network Controls (only shown in Electron) -->
+  <div class="p2p-controls" *ngIf="isElectron()">
+    <div class="network-info" *ngIf="networkInfo()">
+      <strong>Your IPs:</strong>
+      <span *ngFor="let addr of networkInfo()!.addresses" class="ip-address">
+        {{addr.address}}
+      </span>
+      <span *ngIf="networkInfo()!.hosting"> | Hosting on port {{networkInfo()!.port}}</span>
+      <span> | Peers: {{peers().length}}</span>
+    </div>
+
+    <div class="connection-controls">
+      <!-- Rescan button -->
+      <div class="scan-section">
+        <button (click)="rescan()" [disabled]="isScanning()" class="scan-btn">
+          {{isScanning() ? 'Scanning...' : 'Rescan Network'}}
+        </button>
+      </div>
+
+      <!-- Manual IP input -->
+      <div class="manual-ip-section">
+        <input [(ngModel)]="manualIp" placeholder="Enter IP address manually" class="host-input" (keyup.enter)="addManualIp()" />
+        <button (click)="addManualIp()" [disabled]="isConnecting() || !manualIp()">
+          Add
+        </button>
+      </div>
+
+      <!-- Discovered peers list -->
+      <div class="discovered-peers" *ngIf="discoveredPeers().length > 0">
+        <strong>Discovered:</strong>
+        <span *ngFor="let ip of discoveredPeers()" class="discovered-ip">{{ip}}</span>
+      </div>
+
+      <button (click)="disconnect()" *ngIf="peers().length > 0 || isHosting()" class="disconnect-btn">
+        Disconnect All
+      </button>
+    </div>
+  </div>
+
+  <div class="messages">
+    <div *ngFor="let msg of messages()" class="message" [class.system]="msg.isSystem">
+      <span class="user">{{msg.user}}</span>:
+      <span class="text">{{msg.text}}</span>
+      <span class="time">({{msg.time | date:'shortTime'}})</span>
+    </div>
+  </div>
+
+  <div class="input-area">
+    <input [(ngModel)]="input" placeholder="Type a message..." (keyup.enter)="send()" />
+    <button (click)="send()">Send</button>
+  </div>
+</div>

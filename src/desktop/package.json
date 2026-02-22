@@ -1,0 +1,14 @@
+{
+  "name": "secret-messages-desktop",
+  "version": "0.0.1",
+  "description": "Secret Messages Desktop App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron ."
+  },
+  "private": true,
+  "devDependencies": {
+    "electron": "^40.6.0"
+  }
+}

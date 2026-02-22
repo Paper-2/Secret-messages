@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+out/
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
+# Angular
+.angular/
+out-tsc/
+
+# Electron
+*.asar
+
+# IDE
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# .NET
+*.nupkg
+project.lock.json
+*.nuget.props
+*.nuget.targets
+.nuget/
+
+# Misc
+*.tmp
+*.temp
+*.swp
+*~
